@@ -1,30 +1,67 @@
 # ResolveIT Smart Grievance and Feedback Management System
 
-A comprehensive grievance management system built with Spring Boot backend and Vue.js frontend.
+A full-stack grievance management platform built with Spring Boot & Vue.j
 
-## Features
+## Overview
+ResolveIT is a modern Grievance & Feedback Management System designed to help citizens submit complaints online, track real-time status, and ensure transparent resolution through Admin and Officer workflows.
+It supports:
+✅ Role-based access
+✅ Complaint escalation
+✅ Analytics dashboards
+✅ PDF/CSV exports
+✅ Ratings & feedback
+✅ Anonymous complaints
+✅ Email notifications
+✅ JWT & Google OAuth login
 
-### Module 1: User Authentication and Submission Options
-- **Login/Registration**: JWT-based authentication with role-based access
-- **Anonymous Submission**: Option to submit complaints without creating an account
-- **Role Management**: Support for Citizens, Officers, and Admins
+This system is suitable for:
+Smart Cities, Municipal Corporations, Universities, IT Helpdesk Systems, Government Services, and Corporate Support Platforms.
 
-### Module 2: Complaint Management
-- **Complaint Creation**: Submit complaints with categories, priorities, and file attachments
-- **Category Selection**: Sanitation, Traffic, Water, Electricity, Roads, etc.
-- **Priority Levels**: Low, Medium, High, Urgent
-- **File Upload**: Support for images and documents as evidence
+## Key Features
+👤-**Citizen**
+   Register/Login with JWT authentication
+   -**Submit complaints with:**
+         Category 
+         Priority
+         File attachments
 
-### Module 3: Status Tracking and Timeline
-- **Status Flow**: New → Under Review → In Progress → Resolved
-- **Timeline View**: Chronological log of all status changes
-- **Admin Comments**: Visible updates with timestamps
+   Track complaint status
+   Download complaint history as PDF & CSV
+   Submit rating & feedback after resolution
+   Submit anonymous complaints
+   Receive email notifications
 
-### Module 4: Escalation and Admin Panel
-- **Admin Dashboard**: Overview of all complaints and statistics
-- **Officer Assignment**: Assign complaints to specific officers
-- **Escalation Management**: Automatic escalation for unresolved complaints
-- **Officer Management**: Add, edit, and manage officer accounts
+🛠️ -**Admin**
+View all complaints
+Assign complaints to officers
+Set deadlines
+Monitor escalated complaints
+View analytics dashboards
+Export data
+Manage officers and citizens
+
+🧑‍💼 -**Officer**
+View assigned complaints
+Update complaint status
+Add remarks
+Resolve complaints
+Track deadlines
+
+📊-**Analytics**
+Total / Open / Resolved KPIs
+Status distribution
+Complaints by category
+Resolution progress (Pie & Bar charts)
+Upcoming deadlines
+
+🔐-**Security**
+JWT authentication
+Google OAuth login
+## Role-based authorization:
+-**CITIZEN**
+-**ADMIN**
+-**OFFICER**
+
 
 ## Technology Stack
 
@@ -34,6 +71,7 @@ A comprehensive grievance management system built with Spring Boot backend and V
 - **Spring Data JPA** for database operations
 - **H2 Database** (development) / MySQL (production)
 - **Maven** for dependency management
+- **Java mail sender**
 
 ### Frontend
 - **Vue.js 3**
@@ -65,7 +103,7 @@ ResolveIT Management System/
 └── pom.xml                  # Maven configuration
 ```
 
-## Getting Started
+## Installation & Setup
 
 ### Prerequisites
 - Java 21 (LTS) - ✅ You have Java 21.0.9
@@ -113,6 +151,17 @@ ResolveIT Management System/
 
 4. **Access the application**
    - Frontend: http://localhost:3000
+     
+5. **Demo Workflow**
+ 1️⃣ Login as Citizen
+ 2️⃣ Submit Complaint
+ 3️⃣ Show Complaint in List
+ 4️⃣ Admin assigns Officer
+ 5️⃣ Officer updates status
+ 6️⃣ Escalation if unresolved
+ 7️⃣ Complaint resolved
+ 8️⃣ Citizen downloads PDF/CSV
+ 9️⃣ Citizen submits rating & feedback
 
 ## API Endpoints
 
@@ -135,22 +184,6 @@ ResolveIT Management System/
 - `GET /api/admin/officers` - Get all officers
 - `POST /api/admin/officers` - Create new officer
 
-## Database Schema
-
-### Users Table
-- id, username, email, password, role, first_name, last_name, phone_number, is_enabled, created_at, updated_at
-
-### Complaints Table
-- id, title, description, category, priority, status, is_anonymous, anonymous_email, anonymous_phone, user_id, assigned_officer_id, due_date, resolved_at, created_at, updated_at
-
-### Complaint Comments Table
-- id, comment, complaint_id, user_id, is_internal, created_at
-
-### Complaint Status History Table
-- id, status, comment, complaint_id, changed_by, changed_at
-
-### File Uploads Table
-- id, file_name, file_path, file_type, file_size, complaint_id, uploaded_by, uploaded_at
 
 ## Configuration
 
@@ -167,23 +200,6 @@ ResolveIT Management System/
 - CORS enabled for frontend communication
 - Password encryption with BCrypt
 
-## Development Notes
-
-1. **Database**: Currently configured with H2 in-memory database for development
-2. **Authentication**: JWT tokens are used for stateless authentication
-3. **File Upload**: Configured to handle files up to 10MB
-4. **CORS**: Configured to allow requests from localhost:3000 (Vue.js dev server)
-
-## Next Steps
-
-1. Complete complaint management controllers and services
-2. Implement file upload functionality
-3. Create admin panel components
-4. Add email notifications
-5. Implement escalation logic
-6. Add comprehensive testing
-7. Deploy to production environment
-
 ## Contributing
 
 1. Fork the repository
@@ -192,6 +208,5 @@ ResolveIT Management System/
 4. Push to the branch
 5. Create a Pull Request
 
-## License
-
-This project is licensed under the MIT License.
+⭐ Support
+If you like this project, please give it a ⭐ on GitHub!
